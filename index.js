@@ -75,9 +75,10 @@ function removeFromCart(item) {
     return item != getKey(index)
     })
   if (cart === updatedCart) {
-    console.log("That item is not in your cart.") 
+    console.log("That item is not in your cart.")
+    return cart;
     } else {
-      console.log(updatedCart)
+      return updatedCart;
       }
 }
 
