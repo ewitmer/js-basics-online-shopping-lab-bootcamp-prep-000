@@ -74,7 +74,7 @@ function removeFromCart(item) {
   var updatedCart = cart.filter(function(element, index){
     return item != getKey(index)
     })
-  if (cart === updatedCart) {
+  if (cart.length === updatedCart.length) {
     console.log("That item is not in your cart.")
     return cart;
     } else {
