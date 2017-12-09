@@ -71,6 +71,9 @@ function total() {
 
 function removeFromCart(item) {
   // write your code here
+  return cart.filter(function(element, index){
+    return item != getKey(index)
+    })
 }
 
 function placeOrder(cardNumber) {
