@@ -18,14 +18,55 @@ function addToCart(item) {
  let newObj = {[item]: randomNumber(100)};
  cart.push(newObj);
  console.log(`${item} has been added to your cart.`)
+ return cart
 }
 
+function getKey(index) {
+  return Object.keys(cart[index])[0]
+}
+
+function getValue(index, key) {
+  return cart[index][key]
+  }
+  
 function viewCart() {
-  // write your code here
+  var newString = ""
+  if (cart.length === 0) {
+    newString = "Your shopping cart is empty."
+  } else if (cart.length === 1) {
+    var key = getKey(0)
+    var value = getValue(0, key)
+    newString = `In your cart, you have ${key} at $${value}.`
+  } else if (cart.length === 2) {
+    var key0 = getKey(0);
+    var key1 = getKey(1);
+    var value0 = getValue(0, key0);
+    var value1 = getValue(1, key1);
+    newString = `In your cart, you have ${key0} at $${value0} and ${key1} at $${value1}.`
+  } else {
+    newString = "In your cart, you have ";
+    for (var i = 0; i < (cart.length-1); i++) {
+      var keyIndex = getKey(i);
+      var valueIndex = getValue(i, keyIndex);
+      newString = `${newString}${keyIndex} at $${valueIndex}, `;
+    }
+    var indexLast = cart.length-1;
+    var keyLast = getKey(indexLast)
+    var valueLast = getValue(indexLast, keyLast)
+    newString = `${newString}and ${keyLast} at $${valueLast}.`
+  }
+  console.log(newString)
 }
 
 function total() {
   // write your code here
+  var total = 0;
+  for (var i=0; i< cart.length; i++) {
+    let key = getKey(i)
+    let value = getValue(i, key)
+    total = total + value;
+  }
+  return total
 }
 
 function removeFromCart(item) {
