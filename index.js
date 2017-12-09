@@ -71,9 +71,14 @@ function total() {
 
 function removeFromCart(item) {
   // write your code here
-  return cart.filter(function(element, index){
+  var updatedCart = cart.filter(function(element, index){
     return item != getKey(index)
     })
+  if (cart === updatedCart) {
+    console.log("That item is not in your cart.") 
+    } else {
+      console.log(updatedCart)
+      }
 }
 
 function placeOrder(cardNumber) {
